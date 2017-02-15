@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload= function () {
+            var oV=document.getElementById("video");
+            var arrSou=document.getElementsByTagName("source");
+            var oBtn=document.getElementById("btn");
+//            oV.play();  播放
+//            oV.pause(); 停止
+//            oV.load();  重新加载
+         oV.onmouseover= function () {
+             this.play();
+         };
+            oV.onmouseout= function () {
+                this.pause();
+            };
+            oBtn.onclick=function(){
+                arrSou[0].src="Intermission-Walk-in_512kb.mp4";
+                arrSou[1].src="Intermission-Walk-in_512kb.mp4";
+                oV.load();
+            }
+        }
+    </script>
+</head>
+<body>
+<video id="video" controls>
+    <source src="Intermission-Walk-in.ogv">
+    <source  src="Intermission-Walk-in_512kb.mp4">
+    <!--该浏览器不支持该视频格式-->
+</video>
+<!--controls 显示-->
+<input type="button" value="加载" id="btn">
+</body>
+</html>

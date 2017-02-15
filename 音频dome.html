@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload= function () {
+            var oAu=document.getElementById("audio");
+            console.log(oAu.duration);
+            console.log(oAu.volume);//音量
+            console.log(oAu.muted);//静音
+            console.log(oAu.paused);//暂停
+            console.log(oAu.ended);//结束
+            console.log(oAu.error);//错误
+            console.log(oAu.currentSrc);//当前播放资源的路径
+            console.log(oAu.currentTime);//当前播放的时间
+
+            setInterval(function(){
+                console.log(oAu.currentTime);//当前播放的时间
+            },1000);
+
+//            duration  音频的全部时长
+            //volume 音量
+            //muted  是否静音
+            //paused  是否暂停
+            //ended  是否结束
+            //error  是否错误
+            //currentSrc  当前播放资源的路径
+            //currentTime   当前播放的时间
+        }
+    </script>
+</head>
+<body>
+<audio id="audio"  controls src="johann_sebastian_bach_air.mp3"></audio>
+<!--controls 显示-->
+<!--autoplay 自动播放-->
+<!--muted   静音-->
+<!--loop 循环-->
+</body>
+</html>

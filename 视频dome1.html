@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload= function () {
+            var oV=document.getElementById("video");
+            var oPlay=document.getElementById("play");
+            var oNow=document.getElementById("now");
+            var oDur=document.getElementById("dur");
+            var oMuted=document.getElementById("muted");
+            var oFull=document.getElementById("full");
+            var timer=0;
+            oPlay.onclick=function(){
+                if(oV.paused){
+                    oV.play();
+                    this.value="暂停";
+                    timer=setInterval(nowTime,200)
+                }else{
+                    oV.pause();
+                    this.value="播放";
+                    clearInterval(timer);
+                }
+            };
+            oMuted.onclick=function(){
+                if(oV.muted){
+                    oV.muted=false;
+                    this.value="静音";
+                }else{
+                    oV.muted=true;
+                    this.value="取消静音";
+                }
+            };
+             //全屏
+            oFull.onclick=function(){
+                if(oV.webkitRequestFullScreen){
+                    oV.webkitRequestFullScreen();
+                }else if(oV.requestFullScreen){
+                    oV.requestFullScreen();
+                }else if(oV.mozRequestFullScreen){
+                    oV.mozRequestFullScreen();
+                }
+            };
+            function timeFormat(time){
+                var s=parseInt(time%60);
+                s=s<10?"0"+s:s;
+                var m=parseInt(time/60)%60;
+                m=m<10?"0"+m:m;
+                var h=parseInt(time/3600);
+                h=h<10?"0"+h:h;
+                return h+":"+m+":"+s;
+            }
+            oDur.value=timeFormat(oV.duration);//视频的时长
+            function   nowTime(){
+                oNow.value=timeFormat(oV.currentTime);//当前时长
+            }
+        }
+    </script>
+</head>
+<body>
+<video id="video">
+    <source src="Intermission-Walk-in.ogv">
+    <source  src="Intermission-Walk-in_512kb.mp4">
+    <!--该浏览器不支持该视频格式-->
+</video>
+<br>
+<input type="button" value="播放" id="play">
+<input type="button" value="00:00:00" id="now">
+<input type="button" value="99:99:99" id="dur">
+<input type="button" value="静音" id="muted">
+<input type="button" value="全屏" id="full">
+</body>
+</html>
